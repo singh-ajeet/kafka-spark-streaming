@@ -49,7 +49,7 @@ object MeetupEventStreamingSparkApp extends App {
         "POINT (" + (event.getVenue().getLon() + "," +  event.getVenue().getLat() + ")")
     })
 
-  //Printing output of each microbatch on console
+  //Printing output of each micro batch on console
   stream.print()
 
   ssc.start()

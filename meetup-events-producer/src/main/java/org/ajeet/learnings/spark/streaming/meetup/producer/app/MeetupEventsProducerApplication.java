@@ -9,6 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.socket.client.WebSocketClient;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 
+import javax.annotation.PreDestroy;
+
 @SpringBootApplication
 @ComponentScan("org.ajeet.learnings.spark.streaming")
 public class MeetupEventsProducerApplication {
@@ -24,5 +26,13 @@ public class MeetupEventsProducerApplication {
 			WebSocketClient rsvpsSocketClient = new StandardWebSocketClient();
 			rsvpsSocketClient.doHandshake(rsvpsWebSocketHandler, MEETUP_ENDPOINT);
 		};
+	}
+
+
+	@PreDestroy
+	public void shutdownApplication(){
+		System.out.println("=============================================================");
+		System.out.println("================== Shutting down application ================");
+		System.out.println("=============================================================");
 	}
 }
